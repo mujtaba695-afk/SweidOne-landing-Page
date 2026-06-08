@@ -1,0 +1,15 @@
+# Ignore everything by default
+*
+
+# Allow directories
+!*/
+
+# Allow specific files/folders for the landing page
+!index.html
+!style.css
+!script.js
+!logo.png
+!Sweid One - 20250827.jpg
+!wetransfer_15-cly69431-hdr-edit-jpg_2026-06-04_0746/
+!wetransfer_15-cly69431-hdr-edit-jpg_2026-06-04_0746/**
+!.gitignore
