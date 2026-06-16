@@ -104,4 +104,63 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
     }
+
+    // ----------------------------------------------------
+    // 4. Brochure Download Modal
+    // ----------------------------------------------------
+    const brochureModal = document.getElementById('brochure-modal');
+    const brochureTriggers = document.querySelectorAll('.brochure-trigger');
+    const brochureClose = document.querySelector('.brochure-modal-close');
+    const brochureForm = document.getElementById('brochureDownloadForm');
+    const brochureUrl = 'SweidOne_Brochure-Desktop.pdf';
+
+    function openBrochureModal() {
+        if (!brochureModal) return;
+
+        brochureModal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        document.getElementById('brochure-name')?.focus();
+    }
+
+    function closeBrochureModal() {
+        if (!brochureModal) return;
+
+        brochureModal.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    brochureTriggers.forEach(trigger => {
+        trigger.addEventListener('click', openBrochureModal);
+    });
+
+    brochureClose?.addEventListener('click', closeBrochureModal);
+
+    brochureModal?.addEventListener('click', (e) => {
+        if (e.target === brochureModal) {
+            closeBrochureModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && brochureModal && !brochureModal.hidden) {
+            closeBrochureModal();
+        }
+    });
+
+    brochureForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const brochureLead = {
+            name: document.getElementById('brochure-name').value,
+            mobile: document.getElementById('brochure-mobile').value,
+            email: document.getElementById('brochure-email').value,
+            source: 'Sweid One Brochure Download',
+            timestamp: new Date().toISOString()
+        };
+
+        console.log('Brochure Download Lead Captured:', brochureLead);
+        window.open(brochureUrl, '_blank', 'noopener');
+        brochureForm.reset();
+        closeBrochureModal();
+    });
 });
