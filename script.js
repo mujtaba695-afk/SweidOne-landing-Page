@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const brochureTriggers = document.querySelectorAll('.brochure-trigger');
     const brochureClose = document.querySelector('.brochure-modal-close');
     const brochureForm = document.getElementById('brochureDownloadForm');
-    const brochureUrl = 'SweidOne_Brochure-Desktop.pdf';
+    const brochureUrl = 'SweidOne_Brochure%20Desktop.pdf';
 
     function openBrochureModal() {
         if (!brochureModal) return;
